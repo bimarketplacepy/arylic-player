@@ -1,0 +1,31 @@
+# Configuración del reproductor remoto para el parlante Arylic.
+# Copiá este archivo como config.toml (en la misma carpeta) y ajustá los valores.
+#
+# IMPORTANTE: fijá las IP de la PC y del Arylic en el router (reserva DHCP por MAC)
+# para que no cambien nunca. Si cambian, el parlante deja de encontrar la música.
+
+[arylic]
+# IP del parlante en la red del local.
+ip = "10.51.85.20"
+# "auto" prueba http y después https. Este firmware responde por "http".
+protocolo = "http"
+# Segundos máximos de espera por cada comando.
+timeout = 5.0
+
+[servidor]
+# IP de esta PC en la red local: el parlante descarga los MP3 desde acá.
+ip_pc = "10.51.85.12"
+# Puerto del servidor. No usar el 5901 (lo ocupa Stream What You Hear).
+puerto = 8080
+# Interfaz de escucha: "0.0.0.0" = todas (red local y Tailscale).
+host = "0.0.0.0"
+# Carpeta con los MP3 (ruta absoluta, o relativa a este archivo).
+carpeta_musica = "musica"
+# Clave del panel y de la API (header X-Token). Poné una larga y aleatoria.
+token = "cambiar-este-token"
+
+[reproduccion]
+# Volumen (0-100) con el que arranca el álbum cuando lo inicia el sistema.
+volumen_inicial = 40
+# "secuencial" (en orden, repite al terminar) o "aleatorio" (mezclado, repite).
+modo = "secuencial"
